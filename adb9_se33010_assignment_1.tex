@@ -1,8 +1,11 @@
-\documentclass[a4paper, 10pt, notitlepage]{article}
+\documentclass[a4paper, 10pt, notitlepage, fleqn]{article}
 
 \usepackage{fullpage}
 %\usepackage[cm]{fullpage}
 \usepackage{glossaries}
+\usepackage{algorithmicx}
+\usepackage{algpseudocode}
+\usepackage{amsmath}
 
 \title{SE33010 Assignment One}
 \author{Alexander D Brown (adb9)}
@@ -23,6 +26,21 @@ mathematical notation. Where they differ is in the way their specifications are 
 Both are concentrated on the specification of \textit{abstract machines}; a ``model orientated'' 
 approach. This approach differs from an ``algebraic'' (or ``property orientated'') approaches
 which focus on defining \textit{abstract data types}\cite{Hayes93vdmz}.
+
+Algebraic approaches give no explicit model of type, defining abstract data types in terms of the 
+relationships between its interactions. In contrast, both \gls{vdm} and \gls{z} give an explicit 
+model of the state of an abstract machine. A commonly used example is a stack; in an algebraic 
+approach it might be defined in a manner described in equation~\ref{eq:algebraic-stack}, whilst
+a model orientated approach would typically be modelled as a sequence.
+
+\begin{equation}\label{eq:algebraic-stack}
+\mathbf{pop}(\mathbf{push} (x,s)) = s
+\end{equation}
+
+Where \gls{vdm} and \gls{z} start to differ is in the definitions; \gls{vdm} has a lot of 
+structure, using keywords to define different parts of a specification. \Gls{z} has very little of
+this structure; the definitions are done during the specification and usually consist of
+\textit{schemas}.
 
 \bibliographystyle{plain}
 \bibliography{adb9_se33010_assignment_1}
