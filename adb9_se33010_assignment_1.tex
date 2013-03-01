@@ -1,4 +1,4 @@
-\documentclass[a4paper, 10pt, notitlepage, fleqn]{article}
+\documentclass[a4paper, notitlepage, fleqn]{article}
 
 \usepackage{fullpage}
 %\usepackage[cm]{fullpage}
@@ -7,6 +7,7 @@
 \usepackage{algpseudocode}
 \usepackage{amsmath}
 \usepackage{mathtools}
+\usepackage{hyperref}
 
 \title{SE33010 Assignment One}
 \author{Alexander D Brown (adb9)}
@@ -22,7 +23,8 @@
 \end{centering}
 
 Both the \gls{vdm} and \gls{z} use a model-base specification technique and share a lot of their 
-mathematical notation. Where they differ is in the way their specifications are written.
+mathematical notation. Where they differ is in the way their specifications are 
+written\cite{Hayes94comparative}.
 
 Both are concentrated on the specification of \textit{abstract machines}; a ``model orientated'' 
 approach. This approach differs from an ``algebraic'' (or ``property orientated'') approaches
@@ -63,6 +65,11 @@ to define the access to a variable. \Gls{z} has no equivalent to this clause, th
 explicitly define all final values of variables, even if that variable is unchanged, leading to
 statements like: $a' = a$ at the end of predicates.
 
+%TODO recursive things here
+
+\begin{equation}
+T::=nil|binnode\left({ T \times ? \times T}\right)
+\end{equation}
 
 
 \bibliographystyle{plain}
