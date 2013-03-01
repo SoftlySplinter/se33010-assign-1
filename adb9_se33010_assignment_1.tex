@@ -6,6 +6,7 @@
 \usepackage{algorithmicx}
 \usepackage{algpseudocode}
 \usepackage{amsmath}
+\usepackage{mathtools}
 
 \title{SE33010 Assignment One}
 \author{Alexander D Brown (adb9)}
@@ -40,7 +41,29 @@ a model orientated approach would typically be modelled as a sequence.
 Where \gls{vdm} and \gls{z} start to differ is in the definitions; \gls{vdm} has a lot of 
 structure, using keywords to define different parts of a specification. \Gls{z} has very little of
 this structure; the definitions are done during the specification and usually consist of
-\textit{schemas}.
+\textit{schemas}. These schema define not only the states of an abstract machine, but also the 
+operations.
+
+\Gls{z} provides a lot more in-built binary relations, this can lead to simpler predicates in
+specifications as this tends to map to real life data types. However they can also be modelled in
+a similar way to that of \gls{vdm}. These \gls{z} relations also offer a rich set of operators
+defined upon them.
+
+Operations yield some of the biggest differences between \gls{vdm} and \gls{z}; syntactically
+there are quite a few differences; \gls{vdm} users hooked variables 
+($\overset{\leftharpoonup}{a}$) to define variables in the \textit{before} and unhooked ($a$) for
+variables in the \textit{after} state.
+
+\Gls{z}, in contrast, uses undecorated variables ($a$) for variables in the \textit{before} state,
+and primed variables ($a'$) for the \textit{after} state. \Gls{z} also uses variables ending in 
+`$?$' for input and variables ending in `$!$' for outputs.
+
+\Gls{vdm} explicitly defines the `pre-' and `post-' conditions. It also uses an externals clause
+to define the access to a variable. \Gls{z} has no equivalent to this clause, the predicate has to
+explicitly define all final values of variables, even if that variable is unchanged, leading to
+statements like: $a' = a$ at the end of predicates.
+
+
 
 \bibliographystyle{plain}
 \bibliography{adb9_se33010_assignment_1}
