@@ -1,0 +1,95 @@
+\documentclass[a4paper, notitlepage, fleqn]{article}
+
+\usepackage{fullpage}
+%\usepackage[cm]{fullpage}
+\usepackage{glossaries}
+\usepackage{algorithmicx}
+\usepackage{algpseudocode}
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{hyperref}
+\usepackage{amsfonts}
+\usepackage{MnSymbol}
+\usepackage{harpoon}
+
+\title{SE33010 Assignment One}
+\author{Alexander D Brown (adb9)}
+
+\newacronym{vdm}{VDM}{Vienna Development Model}
+\newacronym{z}{Z}{Z Notation}
+
+\begin{document}
+
+\begin{centering}
+\section*{SE33010 Assignment One - Alexander D Brown (adb9)}
+\subsection*{Comparing Vienna Development Model and Z Notation}
+\end{centering}
+
+Both the \gls{vdm} and \gls{z} use a model-base specification technique and share a lot of their 
+mathematical notation. Where they differ is in the way their specifications are 
+written\cite{Hayes94comparative}.
+
+Both are concentrated on the specification of \textit{abstract machines}; a ``model orientated'' 
+approach. This approach differs from an ``algebraic'' (or ``property orientated'') approaches
+which focus on defining \textit{abstract data types}\cite{Hayes93vdmz}.
+
+Algebraic approaches give no explicit model of type, defining abstract data types in terms of the 
+relationships between its interactions. In contrast, both \gls{vdm} and \gls{z} give an explicit 
+model of the state of an abstract machine. A commonly used example is a stack; in an algebraic 
+approach it might be defined in a manner described in equation~\ref{eq:algebraic-stack}, whilst
+a model orientated approach would typically be modelled as a sequence.
+
+\begin{equation}\label{eq:algebraic-stack}
+\mathbf{pop}(\mathbf{push} (x,s)) = s
+\end{equation}
+
+Where \gls{vdm} and \gls{z} start to differ is in the definitions; \gls{vdm} has a lot of 
+structure, using keywords to define different parts of a specification. \Gls{z} has very little of
+this structure; the definitions are done during the specification and usually consist of
+\textit{schemas}. These schema define not only the states of an abstract machine, but also the 
+operations.
+
+\Gls{z} provides a lot more in-built binary relations, this can lead to simpler predicates in
+specifications as this tends to map to real life data types. However they can also be modelled in
+a similar way to that of \gls{vdm}. These \gls{z} relations also offer a rich set of operators
+defined upon them.
+
+Operations yield some of the biggest differences between \gls{vdm} and \gls{z}; syntactically
+there are quite a few differences; \gls{vdm} users hooked variables 
+($\overleftharp{abc}$) to define variables in the \textit{before} and unhooked ($abc$) for
+variables in the \textit{after} state.
+
+\Gls{z}, in contrast, uses undecorated variables ($abc$) for variables in the \textit{before} state,
+and primed variables ($abc'$) for the \textit{after} state. \Gls{z} also uses variables ending in 
+`$?$' for input and variables ending in `$!$' for outputs.
+
+\Gls{vdm} explicitly defines the `pre-' and `post-' conditions. It also uses an externals clause
+to define the access to a variable. \Gls{z} has no equivalent to this clause, the predicate has to
+explicitly define all final values of variables, even if that variable is unchanged, leading to
+statements like: $a' = a$ at the end of predicates.
+
+Another main difference is in the way recursion is handled. There are technical differences in the
+approaches taken. In \gls{vdm} the structure (in the case of the example $binnode$) is the new
+definition, while the type ($T$) is pre-existing. In \gls{z} the type ($T$) is the new definition.
+
+Equation~\ref{eq:z-recurse} shows the \gls{z} definition of a binary tree: 
+
+\begin{equation}\label{eq:z-recurse}
+T::=nil\;|\;binnode\left\llangle{ T \times \mathbb{N} \times T}\right\rrangle
+\end{equation}
+
+Equation~\ref{eq:vdm-recurse} show the \gls{vdm} definition:
+
+\begin{align}\label{eq:vdm-recurse}
+binnode\;\;::\;l\;&:\;T\\
+                 v\;&:\;\mathbb{N}\nonumber\\
+                 r\;&:\;T\nonumber\\
+T = [binnode]\nonumber
+\end{align}
+
+
+\bibliographystyle{plain}
+\bibliography{adb9_se33010_assignment_1}
+
+
+\end{document}
