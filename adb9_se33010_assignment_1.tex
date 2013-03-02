@@ -8,6 +8,9 @@
 \usepackage{amsmath}
 \usepackage{mathtools}
 \usepackage{hyperref}
+\usepackage{amsfonts}
+\usepackage{MnSymbol}
+\usepackage{harpoon}
 
 \title{SE33010 Assignment One}
 \author{Alexander D Brown (adb9)}
@@ -53,11 +56,11 @@ defined upon them.
 
 Operations yield some of the biggest differences between \gls{vdm} and \gls{z}; syntactically
 there are quite a few differences; \gls{vdm} users hooked variables 
-($\overset{\leftharpoonup}{a}$) to define variables in the \textit{before} and unhooked ($a$) for
+($\overleftharp{abc}$) to define variables in the \textit{before} and unhooked ($abc$) for
 variables in the \textit{after} state.
 
-\Gls{z}, in contrast, uses undecorated variables ($a$) for variables in the \textit{before} state,
-and primed variables ($a'$) for the \textit{after} state. \Gls{z} also uses variables ending in 
+\Gls{z}, in contrast, uses undecorated variables ($abc$) for variables in the \textit{before} state,
+and primed variables ($abc'$) for the \textit{after} state. \Gls{z} also uses variables ending in 
 `$?$' for input and variables ending in `$!$' for outputs.
 
 \Gls{vdm} explicitly defines the `pre-' and `post-' conditions. It also uses an externals clause
@@ -65,11 +68,24 @@ to define the access to a variable. \Gls{z} has no equivalent to this clause, th
 explicitly define all final values of variables, even if that variable is unchanged, leading to
 statements like: $a' = a$ at the end of predicates.
 
-%TODO recursive things here
+Another main difference is in the way recursion is handled. There are technical differences in the
+approaches taken. In \gls{vdm} the structure (in the case of the example $binnode$) is the new
+definition, while the type ($T$) is pre-existing. In \gls{z} the type ($T$) is the new definition.
 
-\begin{equation}
-T::=nil|binnode\left({ T \times ? \times T}\right)
+Equation~\ref{eq:z-recurse} shows the \gls{z} definition of a binary tree: 
+
+\begin{equation}\label{eq:z-recurse}
+T::=nil\;|\;binnode\left\llangle{ T \times \mathbb{N} \times T}\right\rrangle
 \end{equation}
+
+Equation~\ref{eq:vdm-recurse} show the \gls{vdm} definition:
+
+\begin{align}\label{eq:vdm-recurse}
+binnode\;\;::\;l\;&:\;T\\
+                 v\;&:\;\mathbb{N}\nonumber\\
+                 r\;&:\;T\nonumber\\
+T = [binnode]\nonumber
+\end{align}
 
 
 \bibliographystyle{plain}
