@@ -7,7 +7,6 @@
 \usepackage{algpseudocode}
 \usepackage{amsmath}
 \usepackage{mathtools}
-\usepackage{hyperref}
 \usepackage{amsfonts}
 \usepackage{MnSymbol}
 \usepackage{harpoon}
@@ -72,13 +71,13 @@ Another main difference is in the way recursion is handled. There are technical 
 approaches taken. In \gls{vdm} the structure (in the case of the example $binnode$) is the new
 definition, while the type ($T$) is pre-existing. In \gls{z} the type ($T$) is the new definition.
 
-Equation~\ref{eq:z-recurse} shows the \gls{z} definition of a binary tree: 
+Equation~\ref{eq:z-recurse} \cite{Hayes93vdmz} shows the \gls{z} definition of a binary tree: 
 
 \begin{equation}\label{eq:z-recurse}
 T::=nil\;|\;binnode\left\llangle{ T \times \mathbb{N} \times T}\right\rrangle
 \end{equation}
 
-Equation~\ref{eq:vdm-recurse} show the \gls{vdm} definition:
+Equation~\ref{eq:vdm-recurse} \cite{Hayes93vdmz} shows the \gls{vdm} definition:
 
 \begin{align}\label{eq:vdm-recurse}
 binnode\;\;::\;l\;&:\;T\\
